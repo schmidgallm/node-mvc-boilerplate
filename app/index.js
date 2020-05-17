@@ -6,6 +6,7 @@ const cors = require('cors');
 // Import Routes
 const authRoute = require('../routes/auth/auth');
 const userAuthRoute = require('../routes/auth/user');
+const userRoute = require('../routes/api/user');
 const productRoute = require('../routes/api/product');
 
 // Init express app
@@ -25,6 +26,7 @@ app.use('/api/v1/auth/auth', authRoute);
 app.use('/api/v1/auth/users', userAuthRoute);
 
 // Init api routes Here
+app.use('/api/v1/users', userRoute);
 app.use('/api/v1/products', productRoute);
 
 // Export app to for server to use

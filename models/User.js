@@ -6,32 +6,32 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: [
-      (input) => {
+      input => {
         return input.length >= 6;
       },
-      'Username must be at least 6 characters long',
-    ],
+      'Username must be at least 6 characters long'
+    ]
   },
   email: {
     type: String,
     required: true,
     unique: true,
-    match: [/.+@.+\..+/, 'Please enter a valid-email address'],
+    match: [/.+@.+\..+/, 'Please enter a valid-email address']
   },
   password: {
     type: String,
     required: true,
     validate: [
-      (input) => {
+      input => {
         return input.length >= 6;
       },
-      'Password must be at least 6 characters long',
-    ],
+      'Password must be at least 6 characters long'
+    ]
   },
   date_created: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now
+  }
 });
 
 const User = mongoose.model('user', UserSchema);
