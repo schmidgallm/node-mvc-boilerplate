@@ -9,6 +9,7 @@
     "no-process-exit": "off",
     "object-shorthand": "off",
     "class-methods-use-this": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "camelcase": 0
   }
 }
