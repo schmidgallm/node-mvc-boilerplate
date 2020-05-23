@@ -127,4 +127,32 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
+/*
+//
+// DELETE REQUESTS
+//
+*/
+
+// @route   DELETE api/v1/orders/order/:id
+// @desc    DELETE order by id
+// @access  PRIVATE
+router.delete('/order/:id', auth, async (req, res) => {
+  try {
+    // find order by id
+    const order = await Order.findById(req.params.id);
+
+    // if order does not exist
+    if (!order) {
+      return res.status(401).json({ msg: 'Order not found' });
+    }
+
+    // delete order from db
+    await order.remove();
+
+    return res.status(200).json({ msg: 'Order succesfully deleted' });
+  } catch (err) {
+    console.warn(err.message);
+  }
+});
+
 module.exports = router;
