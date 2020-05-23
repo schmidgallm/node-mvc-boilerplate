@@ -4,9 +4,13 @@
   "description": "boilerplate code for mvc application with node, express, auth middleware, api, and mongodb",
   "main": "server/index.js",
   "scripts": {
-    "dev": "nodemon server/index.js",
-    "start": "node server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server/index.js",
+    "start:dev": "concurrently \"nodemon --ignore 'public/*'\" \"npm run public\"",
+    "public": "cd public && npm run start",
+    "install": "cd public && npm install",
+    "build": "cd public && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
