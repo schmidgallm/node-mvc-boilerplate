@@ -32,6 +32,12 @@ const UserSchema = new mongoose.Schema({
       'Password must be at least 6 characters long'
     ]
   },
+  order: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'order'
+    }
+  ],
   date_created: {
     type: Date,
     default: Date.now
