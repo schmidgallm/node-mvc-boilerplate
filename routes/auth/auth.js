@@ -32,7 +32,7 @@ router.post(
   // express validator checks
   [
     check('email', 'Please include valid email').isEmail(),
-    check('password', 'Password is required').exists(),
+    check('password', 'Password is required').exists()
   ],
   async (req, res) => {
     // if errors from validation exists
@@ -64,8 +64,8 @@ router.post(
       // init jwt payload with user id
       const payload = {
         user: {
-          id: user.id,
-        },
+          id: user.id
+        }
       };
 
       // sign token and send token to user
