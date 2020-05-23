@@ -4,9 +4,10 @@ const mongoose = require('mongoose');
 const ProductSchema = new mongoose.Schema({
   item_id: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
-  item_description: {
+  description: {
     type: String,
     required: true
   },
@@ -14,11 +15,11 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  created_by: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
-  creation_date: {
+  last_updated: {
     type: Date,
     default: Date.now
   }

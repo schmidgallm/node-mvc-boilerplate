@@ -2,11 +2,21 @@
 const mongoose = require('mongoose');
 
 const OrderSchema = new mongoose.Schema({
-  items: {
+  product: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'product'
+    }
+  ],
+  user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'category'
+    ref: 'user'
   },
   date_created: {
+    type: Date,
+    default: Date.now
+  },
+  date_updated: {
     type: Date,
     default: Date.now
   }
